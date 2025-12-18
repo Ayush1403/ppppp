@@ -57,7 +57,7 @@ const IntroScreen = ({ show, onComplete }) => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-999 flex items-center overflow-hidden cursor-none justify-center bg-black will-change-transform"
+      className="absolute inset-0 z-999 flex items-center overflow-y-hidden cursor-none min-h-full justify-center bg-black will-change-transform"
       style={{ pointerEvents: show ? 'auto' : 'none' }}
     >
       <h1
@@ -66,7 +66,7 @@ const IntroScreen = ({ show, onComplete }) => {
         style={{ perspective: '1000px' }}
       >
          <div className="flex flex-col items-center">
-  <span className="text-7xl md:text-9xl font-bold">
+  <span className="text-4xl md:text-9xl font-bold">
     {welcomeMessages[currentIndex].text}
   </span>
   <span className="mt-4 text-sm tracking-widest opacity-70">
@@ -133,6 +133,18 @@ const App = () => {
       )
     }
   }, [showIntro])
+  useEffect(() => {
+  if (showIntro) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = 'auto'
+  }
+
+  return () => {
+    document.body.style.overflow = 'auto'
+  }
+}, [showIntro])
+
 
   return (
     <>
@@ -145,7 +157,7 @@ const App = () => {
       {/* MAIN CONTENT */}
       <div
         ref={mainContentRef}
-        className={`relative font-stack min-h-dvh transition-opacity duration-500 ${
+        className={`relative overflow-hidden font-stack min-h-dvh transition-opacity duration-500 ${
           showIntro ? 'pointer-events-none' : 'opacity-100'
         }`}
       >
