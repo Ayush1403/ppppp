@@ -113,7 +113,7 @@ const Features = ({ projects }) => {
  const cardStackHeight = 
     window.innerWidth >= 1536 
       ? projects.length * 50 + 450 // Desktop: compact height
-      : projects.length * 50 + 800; // Mobile: taller cards
+      : projects.length * 50 + 600; // Mobile: taller cards
 
   const techColors = {
     React: "border-[#38BDF8] text-[#38BDF8]",
@@ -127,7 +127,7 @@ const Features = ({ projects }) => {
   };
 
   return (
-    <section className={` z-20 relative text-primary  project`}>
+    <section id="features" className={` z-20 relative text-primary  project`}>
       <svg
         className="absolute inset-0 w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
