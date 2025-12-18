@@ -10,7 +10,7 @@
   --breakpoint-2xl: 890px;
   --breakpoint-xl: 768px;
   --color-primary: #F4F1EB;
-  --color-cards: #201F25;
+  --color-cards: #212124;
 }
 
 @layer utilities {

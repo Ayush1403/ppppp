@@ -7,23 +7,22 @@ import { Menu, X } from "lucide-react";
 const NavBar = () => {
   gsap.registerPlugin(ScrollTrigger);
   const [open, setOpen] = useState(false);
-  const mobile = window.innerWidth <= 740;
+  const [mobile, setMobile] = useState(window.innerWidth <= 740);
   const menuRef = useRef(null);
 
-  useGSAP(() => {
-    gsap.to(".navbar", {
-      backgroundColor: "#F4F1EB",
-      scrollTrigger: {
-        trigger: ".navbar",
-        endTrigger: ".hero",
-        start: "clamp(bottom bottom)"
-      }
-    });
-  });
+  // Handle window resize
+  React.useEffect(() => {
+    const handleResize = () => {
+      setMobile(window.innerWidth <= 740);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Mobile menu animation
   useGSAP(() => {
-    if (open && mobile) {
+    if (open && mobile && menuRef.current) {
       const tl = gsap.timeline();
       
       tl.fromTo(menuRef.current, 
@@ -38,7 +37,7 @@ const NavBar = () => {
         ease: "power2.out"
       }, "-=0.2");
     }
-  }, [open]);
+  }, [open, mobile]);
 
   const handleMenuClose = () => {
     if (menuRef.current) {
@@ -54,48 +53,46 @@ const NavBar = () => {
   return (
     <div>
       {!mobile ? (
-        <nav className="h-fit navbar bg-primary fixed top-0 z-50 p-2 flex px-40 justify-between items-center w-full">
-          <h1 className="text-[2.1rem] flex justify-center items-center font-display font-bold text-gray-900">
-            <span className="text-amber-700 w-15 h-15 font-normal text-[3rem]">
+        <nav className="h-fit navbar bg-primary/10 border border-gray-400 backdrop-blur-2xl fixed top-0 z-50 p-2 flex px-40 justify-between items-center w-3/4 left-1/2 -translate-x-1/2 mt-8 rounded-full">
+          <h1 className="text-3xl flex justify-center items-center font-bold text-primary">
+            <span className="text-amber-700 w-15 h-15 font-normal text-5xl">
               <img
                 src="/images/logo.png"
-                className="size-full object-covered"
-                alt="/images/logo.png"
+                className="w-full h-full object-cover"
+                alt="Logo"
               />
             </span>
-            Ayush{" "}
+            Ayush
           </h1>
 
-          <div className="flex gap-8 text-lg font-medium font-display-alt">
+          <div className="flex gap-8 text-lg text-primary font-medium">
             <a
-              href="#pricing"
-              className="hover:text-amber-700 inline-block relative after:transition-transform after:w-full after:scale-x-0 after:origin-center after:absolute after:content-[''] after:bg-black after:h-1 after:left-0 after:-bottom-2 hover:after:scale-x-100"
+              href="#features"
+              className="hover:text-amber-700 inline-block relative after:transition-transform after:w-full after:scale-x-0 after:origin-center after:absolute after:content-[''] after:bg-primary after:h-1 after:left-0 after:-bottom-2 hover:after:scale-x-100"
             >
-              {" "}
               Features
             </a>
             <a
               href="#pricing"
-              className="hover:text-amber-700 inline-block relative after:transition-transform after:w-full after:scale-x-0 after:origin-center after:absolute after:content-[''] after:bg-black after:h-1 after:left-0 after:-bottom-2 hover:after:scale-x-100"
+              className="hover:text-amber-700 inline-block relative after:transition-transform after:w-full after:scale-x-0 after:origin-center after:absolute after:content-[''] after:bg-primary after:h-1 after:left-0 after:-bottom-2 hover:after:scale-x-100"
             >
               Pricing
             </a>
             <a
-              href="#pricing"
-              className="hover:text-amber-700 inline-block relative after:transition-transform after:w-full after:scale-x-0 after:origin-center after:absolute after:content-[''] after:bg-black after:h-1 after:left-0 after:-bottom-2 hover:after:scale-x-100"
+              href="#contact"
+              className="hover:text-amber-700 inline-block relative after:transition-transform after:w-full after:scale-x-0 after:origin-center after:absolute after:content-[''] after:bg-primary after:h-1 after:left-0 after:-bottom-2 hover:after:scale-x-100"
             >
-              {" "}
               Contact
             </a>
           </div>
-          <button className="bg-black text-white p-4 px-6 rounded-full">
+          <button className="bg-black text-white p-4 px-6 rounded-full hover:bg-gray-800 transition-colors">
             Download Resume
           </button>
         </nav>
       ) : (
         <>
-          <div className="w-full  navbar bg-primary flex items-center justify-between px-6 py-4 fixed top-0 z-50">
-            <h1 className="flex items-center gap-2 font-display font-bold text-gray-900 text-[2.1rem]">
+          <div className="navbar bg-primary/10 backdrop-blur-2xl flex items-center justify-between px-6 py-4 fixed top-0 z-50 w-11/12 left-1/2 -translate-x-1/2 mt-4 rounded-full">
+            <h1 className="flex items-center gap-2 font-bold text-primary text-3xl">
               <img
                 src="/images/logo.png"
                 className="w-10 h-10 object-contain"
@@ -105,7 +102,7 @@ const NavBar = () => {
             </h1>
 
             <Menu
-              className="text-cards cursor-pointer"
+              className="text-primary cursor-pointer"
               onClick={() => setOpen(true)}
             />
           </div>
@@ -113,7 +110,7 @@ const NavBar = () => {
           {/* MOBILE MENU */}
           <div
             ref={menuRef}
-            className={`mobile-menu fixed inset-0 bg-cards z-999 flex flex-col justify-center px-10 ${
+            className={`mobile-menu fixed inset-0 bg-cards z-998 flex flex-col justify-center px-10 ${
               open ? "block" : "hidden"
             }`}
             style={{ transform: "translateX(100%)" }}
@@ -125,30 +122,30 @@ const NavBar = () => {
               <X size={32} />
             </button>
 
-            <nav className="flex flex-col text-primary gap-10 text-3xl font-display font-medium">
+            <nav className="flex flex-col text-primary gap-10 text-3xl font-medium">
               <a 
                 href="#features" 
                 onClick={handleMenuClose}
-                className="menu-item"
+                className="menu-item hover:text-amber-700 transition-colors"
               >
                 Features
               </a>
               <a 
                 href="#pricing" 
                 onClick={handleMenuClose}
-                className="menu-item"
+                className="menu-item hover:text-amber-700 transition-colors"
               >
                 Pricing
               </a>
               <a 
                 href="#contact" 
                 onClick={handleMenuClose}
-                className="menu-item"
+                className="menu-item hover:text-amber-700 transition-colors"
               >
                 Contact
               </a>
               <button 
-                className="menu-item mt-10 bg-primary text-cards px-8 py-4 rounded-full text-lg"
+                className="menu-item mt-10 bg-primary text-cards px-8 py-4 rounded-full text-lg hover:bg-gray-800 transition-colors"
               >
                 Download Resume
               </button>
@@ -156,7 +153,6 @@ const NavBar = () => {
           </div>
         </>
       )}
-
     </div>
   );
 };

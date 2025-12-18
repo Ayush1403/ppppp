@@ -9,10 +9,13 @@ const Hero = () => {
   gsap.registerPlugin(SplitText);
 
   useGSAP(() => {
-    const words = new SplitText(".hero-text", { type: "words" });
+    const words = new SplitText(".hero-text", { type: "words,lines",
+      mask: "lines"
+     });
     gsap.from(words.words, {
-      rotate: "5deg ",
-      y: 20,
+     
+      y: 100,
+      
       opacity: 0,
       stagger: 0.06,
       duration: 0.5,
@@ -62,8 +65,8 @@ const Hero = () => {
     btn2.addEventListener("mouseleave", () => tl2.reverse());
 
     gsap.to(".subhero", {
-      y: 100,
-      scale: 0.9,
+      y: -400,
+    
       opacity:0,
       scrollTrigger: {
         trigger: ".hero",
@@ -81,42 +84,25 @@ const Hero = () => {
   });
 
   return (
-    <div className="w-full hero relative overflow-hidden h-dvh py-45 justify-center md:px-20 mt-20 flex text-shadow-cards items-center">
-      <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="polka-dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-            <circle cx="15" cy="15" r="1.5" fill="rgba(0, 0, 0, 0.1)" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="#F4F1EB" />
-        <rect width="100%" height="100%" fill="url(#polka-dots)" />
-      </svg>
-      <div className="w-3/4 z-0 subhero flex flex-col justify-center items-center">
-        <div className="w-full">
-          <h1 className="uppercase hero-text tracking-wider font-display text-black/40 text-xs md:text-xl">
+    <div className="w-full hero relative overflow-hidden h-dvh flex  justify-center px-10  text-shadow-cards items-center">
+      
+      <div className="w-full z-0 subhero flex flex-col justify-center items-center">
+      
+          <h1 className="uppercase hero-text tracking-wider font-display text-primary text-xs md:text-xl">
             Your Creative buddy
           </h1>
-          <h1 className="text-[2.1rem] md:text-[4rem] lg:text-[7rem] hero-text font-display font-bold leading-[0.95]">
-            We craft <span className="digital bg-cards text-primary px-2 rounded-xl hover:animate-bounce">
-              digital
-            </span>
-            <br /> experiences that
-            <br />
-            <span className="relative ">
-              move people
-              <div className="w-full line h-2 bg-amber-700 origin-left absolute left-0 -bottom-3"></div>
-            </span>
+          <h1 className="text-[2.1rem] md:text-[4rem] lg:text-[7rem] hero-text text-primary font-display font-bold leading-[0.95]">
+            Ayush Srivastava
           </h1>
-          <div className="w-full mt-6">
-            <p className="uppercase hero-text w-full md:w-3/4 lg:w-1/2 tracking-wider font-display mt-10 text-black/40 text-xs md:text-xl">
-              Strategy, design, and development for ambitious brands ready to
-              make their mark in the digital world.
+          
+            <p className="uppercase hero-text w-full md:w-3/4 lg:w-1/2 tracking-wider font-display mt-10 text-primary text-center text-xs md:text-xl">
+              Helping ambitious brands make their mark in the digital world.
             </p>
-          </div>
-        </div>
+         
+        
 
-        <div className="flex flex-col mt-10 md:flex-row justify-start w-full md:gap-10 ">
-          <button className="group bg-cards cursor-pointer text-white px-8 py-4  rounded-full text-lg font-medium overflow-hidden relative">
+        <div className="flex flex-col mt-10 md:flex-row justify-center w-full md:gap-10 ">
+          <button className="group bg-primary cursor-pointer text-cards px-8 py-4  rounded-full text-lg font-medium overflow-hidden relative">
             <span className="btn-mask block relative  overflow-hidden">
               <span className="btn-text block">View Our Work</span>
               <span className="btn-text absolute left-0 top-full">
@@ -125,7 +111,7 @@ const Hero = () => {
             </span>
           </button>
 
-          <button className="bg-transparent btn-j border-2 cursor-pointer group border-black/40 text-black/40 px-8 py-4 mt-2 overflow-hidden relative rounded-full text-lg font-medium hover:bg-gray-100 transition">
+          <button className="bg-transparent btn-j border-2 cursor-pointer group border-primary text-primary px-8 py-4 mt-2 overflow-hidden relative rounded-full text-lg font-medium transition">
             <span className="block relative overflow-hidden">
               <span className="btn2 block">Get in Touch</span>
               <span className="absolute btn2 left-0 top-full">
@@ -136,8 +122,7 @@ const Hero = () => {
         </div>
       </div>
     
-      <div className="w-1/2 z-50 hidden xl:block">
-</div>
+      
     </div>
   );
 };
