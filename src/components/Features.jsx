@@ -82,7 +82,7 @@ const Features = ({ projects }) => {
   return (
     <section id="features" className="z-20 relative text-primary">
       {/* Headings */}
-      <div className="pt-20 pb-5 mt-9 px-20">
+      <div className="pt-20 pb-5 mt-20 px-20">
         <h6 className="font-poppins uppercase heading text-[0.9rem] 3xl:text-2xl text-primary/70 tracking-wider">
           Selected works
         </h6>
@@ -95,7 +95,7 @@ const Features = ({ projects }) => {
       </div>
 
       {/* Cards (static layout) */}
-      <div className="w-full flex flex-col items-center gap-10 px-4">
+      <div className="w-full flex flex-col items-center gap-10 mt-20 px-4">
         {projects.map((proj, i) => (
           <div
             key={i}
