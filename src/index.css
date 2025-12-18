@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-stack: "Stack Sans Headline", sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-display-alt: "Rubik", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-logo: "DM Sans", sans-serif;
+  --breakpoint-3xl: 1017px;
+  --breakpoint-2xl: 890px;
+  --breakpoint-xl: 768px;
+  --color-primary: #F4F1EB;
+  --color-cards: #201F25;
+}
+
+@layer utilities {
+  .hover-underline {
+    @apply relative cursor-pointer transition-all duration-200;
+  }
+  .hover-underline::after {
+    content: "";
+    @apply absolute left-1/2 bottom-0 w-0 h-[2px] bg-green-600 transition-all duration-200 ease-linear;
+  }
+  .hover-underline:hover::after {
+    @apply left-0 w-full;
+  }
+
+  .custom-clip {
+    clip-path: ellipse(50% 35% at 50% 50%);
+  }
+}
