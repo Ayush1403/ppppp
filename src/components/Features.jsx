@@ -127,7 +127,7 @@ const Features = ({ projects }) => {
   };
 
   return (
-    <section className={` pb-30 z-20 relative text-primary  project`}>
+    <section className={` z-20 relative text-primary  project`}>
       <svg
         className="absolute inset-0 w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +153,7 @@ const Features = ({ projects }) => {
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
       {/* Headings */}
-      <div className="py-20 px-20">
+      <div className="pt-20 pb-5  px-20">
         <h6 className="font-display uppercase heading text-[0.9rem] 3xl:text-2xl text-primary/70 tracking-wider">
           Selected works
         </h6>
@@ -175,7 +175,7 @@ const Features = ({ projects }) => {
       >
         {projects.map((proj, i) => (
           <div
-            className={` card-${i} 3xl:w-[80%] w-[95%] h-[800px] 3xl:h=[440px] border border-[#403F44] overflow-hidden shadow-3xl bg-cards rounded-4xl proj text-cards absolute flex flex-col 3xl:flex-row gap-10`}
+            className={` card-${i} 3xl:w-[80%] w-[95%] h-[600px] 3xl:h=[440px] border border-[#403F44] overflow-hidden shadow-3xl bg-cards rounded-4xl proj text-cards absolute flex flex-col 3xl:flex-row gap-10`}
             style={{ top: ` ${i * 50}px` }}
           >
             <div className="w-full 3xl:w-1/4 h-1/2 3xl:h-full p-6">
