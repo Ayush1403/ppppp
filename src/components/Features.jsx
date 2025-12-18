@@ -182,7 +182,7 @@ const Features = ({ projects }) => {
               <img
                 src={proj.image}
                 alt=""
-                className="size-full object-cover rounded-[34px]"
+                className="size-full object-cover rounded-[17px]"
               />
             </div>
             <div className="3xl:mt-8 w-full 3xl:w-1/2 px-4  pr-4  flex flex-col">
