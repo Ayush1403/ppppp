@@ -20,7 +20,7 @@ const Features = ({ projects }) => {
         trigger: ".project",
         start: "clamp(top 80%)",
         end: "clamp(bottom bottom)",
-        markers: true,
+        
         scrub: true,
       },
     });
@@ -32,7 +32,6 @@ const Features = ({ projects }) => {
         trigger: ".project",
         start: "clamp(top 80%)",
         end: "clamp(bottom bottom)",
-        markers: true,
         scrub: true,
       },
     });
@@ -112,7 +111,7 @@ const Features = ({ projects }) => {
 
  const cardStackHeight = 
     window.innerWidth >= 1536 
-      ? projects.length * 50 + 450 // Desktop: compact height
+      ? projects.length * 70 + 450 // Desktop: compact height
       : projects.length * 50 + 600; // Mobile: taller cards
 
   const techColors = {
@@ -127,7 +126,7 @@ const Features = ({ projects }) => {
   };
 
   return (
-    <section id="features" className={` z-20 relative text-primary  project`}>
+    <section id="features" className={` z-20 relative  text-primary  project`}>
       <svg
         className="absolute inset-0 w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +152,7 @@ const Features = ({ projects }) => {
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
       {/* Headings */}
-      <div className="pt-20 pb-5  px-20">
+      <div className="pt-20 pb-5 mt-9 px-20">
         <h6 className="font-display uppercase heading text-[0.9rem] 3xl:text-2xl text-primary/70 tracking-wider">
           Selected works
         </h6>

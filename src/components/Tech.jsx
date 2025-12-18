@@ -2,7 +2,10 @@ import React from 'react'
 
 const Tech = () => {
   return (
-    <div className='bg-primary relative h-dvh'>Tech</div>
+     <section className={` z-20 relative h-dvh text-primary  project`}>
+    
+      
+    </section>
   )
 }
 

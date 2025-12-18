@@ -48,6 +48,30 @@ const projects = [
   return (
     <div className='overflow-x-hidden bg-primary  relative font-stack min-h-dvh'>
       <NavBar />
+        <svg
+        className="absolute inset-0 w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="grid"
+            x="0"
+            y="0"
+            width="60"
+            height="60"
+            patternUnits="userSpaceOnUse"
+          >
+            <rect width="60" height="60" fill="#1C1B21" />
+            <path
+              d="M 60 0 L 0 0 0 60"
+              fill="none"
+              stroke="#19181D"
+              strokeWidth="15"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
       <Hero />
      
         <Features projects={projects} />

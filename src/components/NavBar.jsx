@@ -54,7 +54,7 @@ const NavBar = () => {
   return (
     <div>
       {!mobile ? (
-        <nav className="h-fit navbar fixed top-0 z-50 p-2 flex px-40 justify-between items-center w-full">
+        <nav className="h-fit navbar bg-primary fixed top-0 z-50 p-2 flex px-40 justify-between items-center w-full">
           <h1 className="text-[2.1rem] flex justify-center items-center font-display font-bold text-gray-900">
             <span className="text-amber-700 w-15 h-15 font-normal text-[3rem]">
               <img

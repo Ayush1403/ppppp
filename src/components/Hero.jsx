@@ -61,9 +61,10 @@ const Hero = () => {
     btn2.addEventListener("mouseenter", () => tl2.play());
     btn2.addEventListener("mouseleave", () => tl2.reverse());
 
-    gsap.to(".hero", {
+    gsap.to(".subhero", {
       y: 100,
-
+      scale: 0.9,
+      opacity:0,
       scrollTrigger: {
         trigger: ".hero",
         start: "clamp(top center)",
@@ -90,7 +91,7 @@ const Hero = () => {
         <rect width="100%" height="100%" fill="#F4F1EB" />
         <rect width="100%" height="100%" fill="url(#polka-dots)" />
       </svg>
-      <div className="w-3/4 z-0 flex flex-col justify-center items-center">
+      <div className="w-3/4 z-0 subhero flex flex-col justify-center items-center">
         <div className="w-full">
           <h1 className="uppercase hero-text tracking-wider font-display text-black/40 text-xs md:text-xl">
             Your Creative buddy
