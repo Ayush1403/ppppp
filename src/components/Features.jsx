@@ -12,9 +12,6 @@ const Features = ({ projects }) => {
       mask: "lines",
     });
 
-
-
-
     gsap.from(split.words, {
       yPercent: 100,
       opacity: 0.8,
@@ -61,67 +58,62 @@ const Features = ({ projects }) => {
     });
 
     return () => {
- 
-  split.revert();
-};
+      split.revert();
+    };
   });
 
   useGSAP(() => {
-  const ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".source").forEach((btn) => {
+        const text = new SplitText(btn.querySelectorAll(".source-text"), {
+          type: "chars",
+        });
 
-    gsap.utils.toArray(".source").forEach((btn) => {
-      const text = new SplitText(
-        btn.querySelectorAll(".source-text"),
-        { type: "chars" }
-      );
+        const tl = gsap.timeline({ paused: true });
 
-      const tl = gsap.timeline({ paused: true });
+        tl.to(text.chars, {
+          yPercent: -100,
+          duration: 0.4,
+          stagger: 0.02,
+          ease: "power2.out",
+        });
 
-      tl.to(text.chars, {
-        yPercent: -100,
-        duration: 0.4,
-        stagger: 0.02,
-        ease: "power2.out",
+        btn.addEventListener("mouseenter", () => tl.play());
+        btn.addEventListener("mouseleave", () => tl.reverse());
       });
-
-      btn.addEventListener("mouseenter", () => tl.play());
-      btn.addEventListener("mouseleave", () => tl.reverse());
     });
 
+    return () => ctx.revert();
   });
 
-  return () => ctx.revert();
-});
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".sourcee").forEach((btn) => {
+        const text = new SplitText(btn.querySelectorAll(".source-textt"), {
+          type: "chars",
+        });
 
+        const tl = gsap.timeline({ paused: true });
 
- useGSAP(() => {
-  const ctx = gsap.context(() => {
+        tl.to(text.chars, {
+          yPercent: -100,
+          duration: 0.4,
+          stagger: 0.02,
+          ease: "power2.out",
+        });
 
-    gsap.utils.toArray(".sourcee").forEach((btn) => {
-      const text = new SplitText(
-        btn.querySelectorAll(".source-textt"),
-        { type: "chars" }
-      );
-
-      const tl = gsap.timeline({ paused: true });
-
-      tl.to(text.chars, {
-        yPercent: -100,
-        duration: 0.4,
-        stagger: 0.02,
-        ease: "power2.out",
+        btn.addEventListener("mouseenter", () => tl.play());
+        btn.addEventListener("mouseleave", () => tl.reverse());
       });
-
-      btn.addEventListener("mouseenter", () => tl.play());
-      btn.addEventListener("mouseleave", () => tl.reverse());
     });
 
+    return () => ctx.revert();
   });
 
-  return () => ctx.revert();
-});
-
-  const cardStackHeight = projects.length * 100 + 600;
+ const cardStackHeight = 
+    window.innerWidth >= 1536 
+      ? projects.length * 50 + 450 // Desktop: compact height
+      : projects.length * 50 + 800; // Mobile: taller cards
 
   const techColors = {
     React: "border-[#38BDF8] text-[#38BDF8]",
@@ -162,17 +154,18 @@ const Features = ({ projects }) => {
       </svg>
       {/* Headings */}
       <div className="py-20 px-20">
-        <h6 className="font-display uppercase heading text-[0.9rem] md:text-2xl text-primary/70 tracking-wider">
+        <h6 className="font-display uppercase heading text-[0.9rem] 3xl:text-2xl text-primary/70 tracking-wider">
           Selected works
         </h6>
         <h1
           id="heading"
-          className="font-display text-primary mt-3 heading text-[2rem] leading-0.4 md:text-[4rem] lg:text-[7rem] font-bold "
+          className="font-display text-primary mt-3 heading text-[2rem] leading-0.4 3xl:text-[3rem] lg:text-[5rem] font-bold "
         >
+          Featured {" "}
           <span className="bg-primary cover text-cards px-2 rounded-lg">
             Projects
           </span>{" "}
-          I Am <span>Proud of</span>
+          
         </h1>
       </div>
 
@@ -182,23 +175,23 @@ const Features = ({ projects }) => {
       >
         {projects.map((proj, i) => (
           <div
-            className={` card-${i} w-[60%] h-[550px] border border-[#403F44] overflow-hidden shadow-3xl bg-cards rounded-4xl proj text-cards absolute flex  gap-10`}
+            className={` card-${i} 3xl:w-[80%] w-[95%] h-[800px] 3xl:h=[440px] border border-[#403F44] overflow-hidden shadow-3xl bg-cards rounded-4xl proj text-cards absolute flex flex-col 3xl:flex-row gap-10`}
             style={{ top: ` ${i * 50}px` }}
           >
-            <div className="w-1/2 h-full p-6">
+            <div className="w-full 3xl:w-1/4 h-1/2 3xl:h-full p-6">
               <img
                 src={proj.image}
                 alt=""
                 className="size-full object-cover rounded-[34px]"
               />
             </div>
-            <div className="mt-8 w-1/2 pr-4 flex flex-col">
-              <h1 className="font-display uppercase text-xl  font-bold bg-primary/40 text-cards w-fit p-2 rounded-lg">
+            <div className="3xl:mt-8 w-full 3xl:w-1/2 px-4  pr-4  flex flex-col">
+              <h1 className="font-display uppercase text-xs 3xl:text-xl font-bold bg-primary/40 text-cards w-fit p-2 rounded-lg">
                 {proj.title}
               </h1>
               <h1
                 key={i}
-                className="text-3xl mt-3 font-poppins font-medium text-primary"
+                className="3xl:text-3xl text-[20px] mt-3 font-poppins font-medium text-primary"
               >
                 {proj.description}
               </h1>
@@ -214,27 +207,27 @@ const Features = ({ projects }) => {
                   </span>
                 ))}
               </div>
-              <p className="text-[24px] mt-6 text-justify mr-10 font-poppins font-light text-primary">
+              <p className="text-[18px]  mt-6  text-justify mr-10 font-poppins font-light text-primary">
                 {proj.explain}
               </p>
-              <div className="flex justify-end  mt-20 mr-10 gap-6">
+              <div className="flex justify-end mt-4 mb-4 3xl:absolute bottom-10 right-10 gap-6">
                 <button className="text-[18px] source relative hover:scale-105 transition-all duration-200 cursor-pointer text-justify overflow-hidden border px-2  font-poppins font-light text-primary">
-                   <span className="source-mask block relative  overflow-hidden">
-              <span className="source-text block">Source Code</span>
-              <span className="source-text absolute left-0 top-full">
-                Source Code
-              </span>
-            </span>
-                  
-                 
+                  <span className="source-mask block relative  overflow-hidden">
+                    <span className="source-text block">Source Code</span>
+                    <span className="source-text absolute left-0 top-full">
+                      Source Code
+                    </span>
+                  </span>
                 </button>
                 <button className="text-[18px]  sourcee text-justify border bg-primary p-2 font-poppins font-medium text-cards">
-                   <span className="source-maskk block relative  overflow-hidden">
-              <span className="source-textt block">Working Demo</span>
-              <span className="source-textt absolute left-0 top-full">
-                Working Demo
-              </span>
-              </span>
+                  <a href={proj.link}>
+                    <span className="source-maskk block relative  overflow-hidden">
+                      <span className="source-textt block">Working Demo</span>
+                      <span className="source-textt absolute left-0 top-full">
+                        Working Demo
+                      </span>
+                    </span>
+                  </a>
                 </button>
               </div>
             </div>

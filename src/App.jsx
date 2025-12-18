@@ -49,8 +49,10 @@ const projects = [
     <div className='overflow-x-hidden bg-primary  relative font-stack min-h-dvh'>
       <NavBar />
       <Hero />
+     
         <Features projects={projects} />
-        <Tech />
+         <Tech />
+        
     </div>
   )
 }

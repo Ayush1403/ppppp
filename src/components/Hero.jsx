@@ -80,7 +80,7 @@ const Hero = () => {
   });
 
   return (
-    <div className="w-full hero relative overflow-hidden h-dvh py-45 justify-center px-20 mt-20 flex text-shadow-cards items-center">
+    <div className="w-full hero relative overflow-hidden h-dvh py-45 justify-center md:px-20 mt-20 flex text-shadow-cards items-center">
       <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="polka-dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
@@ -114,8 +114,8 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-start w-full md:gap-10 ">
-          <button className="group bg-cards cursor-pointer text-white px-8 py-4 mt-10 rounded-full text-lg font-medium overflow-hidden relative">
+        <div className="flex flex-col mt-10 md:flex-row justify-start w-full md:gap-10 ">
+          <button className="group bg-cards cursor-pointer text-white px-8 py-4  rounded-full text-lg font-medium overflow-hidden relative">
             <span className="btn-mask block relative  overflow-hidden">
               <span className="btn-text block">View Our Work</span>
               <span className="btn-text absolute left-0 top-full">
@@ -124,7 +124,7 @@ const Hero = () => {
             </span>
           </button>
 
-          <button className="bg-transparent btn-j border-2 cursor-pointer group border-black/40 text-black/40 px-8 py-4 mt-10 overflow-hidden relative rounded-full text-lg font-medium hover:bg-gray-100 transition">
+          <button className="bg-transparent btn-j border-2 cursor-pointer group border-black/40 text-black/40 px-8 py-4 mt-2 overflow-hidden relative rounded-full text-lg font-medium hover:bg-gray-100 transition">
             <span className="block relative overflow-hidden">
               <span className="btn2 block">Get in Touch</span>
               <span className="absolute btn2 left-0 top-full">
@@ -136,11 +136,6 @@ const Hero = () => {
       </div>
     
       <div className="w-1/2 z-50 hidden xl:block">
-  <img
-    src="/images/image.png"
-    alt="Hero"
-    className="w-full h-full object-contain"
-  />
 </div>
     </div>
   );
