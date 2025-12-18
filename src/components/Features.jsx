@@ -207,7 +207,7 @@ const Features = ({ projects }) => {
                   </span>
                 ))}
               </div>
-              <p className="text-[18px]  mt-6  text-justify mr-10 font-poppins font-light text-primary">
+              <p className="text-[18px] hidden 3xl:block mt-6  text-justify mr-10 font-poppins font-light text-primary">
                 {proj.explain}
               </p>
               <div className="flex justify-end mt-4 mb-4 3xl:absolute bottom-10 right-10 gap-6">
