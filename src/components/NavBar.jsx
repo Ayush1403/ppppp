@@ -113,7 +113,7 @@ const NavBar = () => {
           {/* MOBILE MENU */}
           <div
             ref={menuRef}
-            className={`mobile-menu fixed inset-0 bg-cards z-[999] flex flex-col justify-center px-10 ${
+            className={`mobile-menu fixed inset-0 bg-primary z-999 flex flex-col justify-center px-10 ${
               open ? "block" : "hidden"
             }`}
             style={{ transform: "translateX(100%)" }}
