@@ -175,10 +175,10 @@ const Features = ({ projects }) => {
       >
         {projects.map((proj, i) => (
           <div
-            className={` card-${i} 3xl:w-[80%] w-[95%] h-[600px] 3xl:h=[440px] border border-[#403F44] overflow-hidden shadow-3xl bg-cards rounded-4xl proj text-cards absolute flex flex-col 3xl:flex-row gap-10`}
+            className={` card-${i} 3xl:w-[80%] w-[95%] h-[500px] md:h=[400px] border border-[#403F44] overflow-hidden shadow-3xl bg-cards rounded-4xl proj text-cards absolute flex flex-col 3xl:flex-row gap-10`}
             style={{ top: ` ${i * 30}px` }}
           >
-            <div className="w-full 3xl:w-1/4 h-1/2 3xl:h-full p-2 xl:p-6">
+            <div className="w-full 3xl:w-1/2 h-[40%] 3xl:h-full p-2 xl:p-6">
               <img
                 src={proj.image}
                 alt=""
@@ -191,7 +191,7 @@ const Features = ({ projects }) => {
               </h1>
               <h1
                 key={i}
-                className="3xl:text-3xl text-[20px] mt-3 font-poppins font-medium text-primary"
+                className="3xl:text-3xl text-[20px] line-clamp-1 mt-3 font-poppins font-medium text-primary"
               >
                 {proj.description}
               </h1>
