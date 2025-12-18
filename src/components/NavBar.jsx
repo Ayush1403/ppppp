@@ -94,7 +94,7 @@ const NavBar = () => {
         </nav>
       ) : (
         <>
-          <div className="w-full  navbar flex items-center justify-between px-6 py-4 fixed top-0 z-50">
+          <div className="w-full  navbar bg-primary flex items-center justify-between px-6 py-4 fixed top-0 z-50">
             <h1 className="flex items-center gap-2 font-display font-bold text-gray-900 text-[2.1rem]">
               <img
                 src="/images/logo.png"
@@ -113,7 +113,7 @@ const NavBar = () => {
           {/* MOBILE MENU */}
           <div
             ref={menuRef}
-            className={`mobile-menu fixed inset-0 bg-primary z-999 flex flex-col justify-center px-10 ${
+            className={`mobile-menu fixed inset-0 bg-cards z-999 flex flex-col justify-center px-10 ${
               open ? "block" : "hidden"
             }`}
             style={{ transform: "translateX(100%)" }}
