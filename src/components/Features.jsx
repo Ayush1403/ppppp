@@ -176,7 +176,7 @@ const Features = ({ projects }) => {
         {projects.map((proj, i) => (
           <div
             className={` card-${i} 3xl:w-[80%] w-[95%] h-[600px] 3xl:h=[440px] border border-[#403F44] overflow-hidden shadow-3xl bg-cards rounded-4xl proj text-cards absolute flex flex-col 3xl:flex-row gap-10`}
-            style={{ top: ` ${i * 50}px` }}
+            style={{ top: ` ${i * 30}px` }}
           >
             <div className="w-full 3xl:w-1/4 h-1/2 3xl:h-full p-6">
               <img
