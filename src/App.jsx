@@ -1,90 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react'
-import gsap from 'gsap'
-
-import NavBar from './components/NavBar'
-import Hero from './components/Hero'
-import Features from './components/Features'
-import Tech from './components/Tech'
-import Services from './components/Services'
-
-/* ================= INTRO SCREEN ================= */
-
-const IntroScreen = ({ show, onComplete }) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const textRef = useRef(null)
-  const containerRef = useRef(null)
-
-  const welcomeMessages = [
-  { text: "Welcome", lang: "English" },
-  { text: "नमस्ते", lang: "Hindi" },
-  { text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ", lang: "Punjabi" },
-  { text: "வரவேற்கிறோம்", lang: "Tamil" },
-  { text: "ようこそ", lang: "Japanese" },
-  { text: "ꯁ꯭ꯋꯥꯒꯠ", lang: "Meitei (Manipuri)" }
-]
-
-  useEffect(() => {
-    if (!show) return
-
-    const tl = gsap.timeline()
-
-    tl.fromTo(
-      textRef.current,
-      { opacity: 0,scale:0.9 },
-      { opacity: 1, duration: 0.5, ease: "back.out(1.7)",scale:1 }
-    )
-      .to(
-        textRef.current,
-        { opacity: 0, duration: 0.2, ease: "back.in(1.7)" },
-        "+=0.4"
-      )
-      .eventCallback("onComplete", () => {
-        if (currentIndex < welcomeMessages.length - 1) {
-          setCurrentIndex(prev => prev + 1)
-        } else {
-          gsap.to(containerRef.current, {
-            yPercent: -100,
-            duration: 0.9,
-            ease: "power2.inOut",
-            onComplete
-          })
-        }
-      })
-
-    return () => tl.kill()
-  }, [currentIndex, show, onComplete])
-
-  return (
-    <div
-      ref={containerRef}
-      className="absolute inset-0 z-999 flex items-center overflow-y-hidden cursor-none min-h-full justify-center bg-black will-change-transform"
-      style={{ pointerEvents: show ? 'auto' : 'none' }}
-    >
-      <h1
-        ref={textRef}
-        className="text-7xl md:text-9xl font-bold font-display text-primary"
-        style={{ perspective: '1000px' }}
-      >
-         <div className="flex flex-col items-center">
-  <span className="text-4xl md:text-9xl font-bold">
-    {welcomeMessages[currentIndex].text}
-  </span>
-  <span className="mt-4 text-sm tracking-widest opacity-70">
-    {welcomeMessages[currentIndex].lang}
-  </span>
-</div>
-      </h1>
-    </div>
-  )
-}
-
-/* ================= MAIN APP ================= */
+import React from 'react'
+import { NavBar , Hero ,Features , Services ,Tech } from './components'
 
 const App = () => {
-  const [showIntro, setShowIntro] = useState(true)
-  const mainContentRef = useRef(null)
 
-  const projects = [
+   const projects = [
     {
       title: "Sanskriti",
       description: "Heritage Exploratory Platform",
@@ -122,47 +41,11 @@ const App = () => {
         "A real estate platform showcasing property listings with secure authentication, role-based access, clean UI, and responsive design for seamless browsing.",
     },
   ]
-
-  /* Fade in main app AFTER intro */
-  useEffect(() => {
-    if (!showIntro) {
-      gsap.fromTo(
-        mainContentRef.current,
-        { yPercent: 0 },
-        { opacity: 1, yPercent: 0, duration: 0.6, ease: "power2.out" }
-      )
-    }
-  }, [showIntro])
-  useEffect(() => {
-  if (showIntro) {
-    document.body.style.overflow = 'hidden'
-  } else {
-    document.body.style.overflow = 'auto'
-  }
-
-  return () => {
-    document.body.style.overflow = 'auto'
-  }
-}, [showIntro])
-
-
   return (
-    <>
-      {/* INTRO */}
-      <IntroScreen
-        show={showIntro}
-        onComplete={() => setShowIntro(false)}
-      />
-<NavBar />
-      {/* MAIN CONTENT */}
-      <div
-        ref={mainContentRef}
-        className={`relative overflow-hidden font-stack min-h-dvh transition-opacity duration-500 ${
-          showIntro ? 'pointer-events-none' : 'opacity-100'
-        }`}
-      >
-        {/* BACKGROUND GRID */}
-        <svg
+    
+    <div className='relative'>
+      <NavBar />
+       <svg
           className="absolute inset-0 w-full h-full will-change-transform"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -188,12 +71,11 @@ const App = () => {
         </svg>
 
         
-        <Hero startAnimation={!showIntro} />
+        <Hero/>
         <Features projects={projects} />
         <Services />
         <Tech />
-      </div>
-    </>
+    </div>
   )
 }
 

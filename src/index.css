@@ -11,6 +11,7 @@
   --breakpoint-xl: 768px;
   --color-primary: #F4F1EB;
   --color-cards: #212124;
+  --color-bgF: #131315;
 }
 
 @layer utilities {
@@ -28,4 +29,13 @@
   .custom-clip {
     clip-path: ellipse(50% 35% at 50% 50%);
   }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE & Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
 }

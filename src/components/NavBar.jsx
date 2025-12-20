@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 const NavBar = () => {
   gsap.registerPlugin(ScrollTrigger);
   const [open, setOpen] = useState(false);
-  const [mobile, setMobile] = useState(window.innerWidth <= 740);
+  const [mobile, setMobile] = useState(window.innerWidth <= 1253);
   const menuRef = useRef(null);
 
   // Handle window resize

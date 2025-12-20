@@ -1,161 +1,213 @@
-import React from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/all";
-
-gsap.registerPlugin(SplitText);
+import { ScrollTrigger, SplitText } from "gsap/all";
+import { useMediaQuery } from "react-responsive";
 
 const Features = ({ projects }) => {
-  // Heading animation (kept)
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  const isMobile = useMediaQuery({
+    query: "(max-width: 1486px)",
+  });
+
+  const cardsRef = useRef(null);
+
   useGSAP(() => {
     const split = new SplitText(".heading", {
       type: "words,lines",
       mask: "lines",
     });
 
-    gsap.from(split.words, {
-      yPercent: 100,
-      opacity: 0.8,
-      stagger: 0.06,
-      scrollTrigger:{
-        
-          trigger:"#features",
-          start:"clamp(top 90%)",
-          end:"clamp(top top)",
-          scrub:true,
-          span:true
-      }
+    if (isMobile) return;
+    if (!cardsRef.current) return;
+
+    const scrollCards = cardsRef.current;
+    const totalWidth = scrollCards.scrollWidth;
+    const viewPortWidth = window.innerWidth;
+
+    gsap.to(scrollCards, {
+      x: -(totalWidth - viewPortWidth + 300),
+      delay: 1,
+      scrollTrigger: {
+        trigger: ".project",
+        start: "clamp(top top)",
+        end: `+=${totalWidth + 500}`,
+        pin: true,
+        scrub: 2,
+      },
     });
 
-    gsap.from(".cover", {
-      yPercent: 100,
+    gsap.from(split.words, {
+      y: 100,
       opacity: 0,
       stagger: 0.06,
-      scrollTrigger:{
-         
-          trigger:"#features",
-          start:"clamp(top 90%)",
-          end:"clamp(top top)",
-          scrub:true
-      }
+      scrollTrigger: {
+        trigger: ".project",
+        start: "clamp(top top+=300)",
+        toggleActions: "play none none reverse",
+      },
     });
-
-    return () => split.revert();
+    return () => {
+      split.revert(); // VERY important
+    };
   });
 
-  // Button hover animation (kept)
-  useGSAP(() => {
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray(".source").forEach((btn) => {
-        const text = new SplitText(btn.querySelectorAll(".source-text"), {
-          type: "chars",
-        });
+  const techColor = {
+  React: "#61DAFB",         
+  "React-Leaflet": "#199900", 
+  "Tailwind CSS": "#38BDF8",  
+  GSAP: "#88CE02",           
 
-        const tl = gsap.timeline({ paused: true });
+  "Node.js": "#339933",     
+  "Express.js": "#ffffff",  
+  MongoDB: "#47A248",        
+  JWT: "#FB015B",            
 
-        tl.to(text.chars, {
-          yPercent: -100,
-          duration: 0.4,
-          stagger: 0.02,
-          ease: "power2.out",
-        });
-
-        btn.addEventListener("mouseenter", () => tl.play());
-        btn.addEventListener("mouseleave", () => tl.reverse());
-      });
-    });
-
-    return () => ctx.revert();
-  });
-
-  const techColors = {
-    React: "border-[#38BDF8] text-[#38BDF8]",
-    "React-Leaflet": "border-[#22C55E] text-[#22C55E]",
-    "Tailwind CSS": "border-[#0891B2] text-[#0891B2]",
-    GSAP: "border-[#84CC16] text-[#84CC16]",
-    "Node.js": "border-[#22C55E] text-[#22C55E]",
-    "Express.js": "border-[#E5E7EB] text-[#E5E7EB]",
-    MongoDB: "border-[#4ADE80] text-[#4ADE80]",
-    JWT: "border-[#FACC15] text-[#FACC15]",
-  };
+};
 
   return (
-    <section id="features" className="z-20 relative text-primary">
-      {/* Headings */}
-      <div className="pt-20 pb-5 mt-20 px-20">
-        <h6 className="font-poppins uppercase heading text-[0.9rem] 3xl:text-2xl text-primary/70 tracking-wider">
-          Selected works
-        </h6>
-        <h1 className="font-poppins text-primary mt-3 heading text-[2rem] 3xl:text-[3rem] lg:text-[5rem] font-bold">
-          Featured{" "}
-          <span className="bg-primary cover text-cards px-2 py-1 rounded-lg">
-            Projects
-          </span>
-        </h1>
-      </div>
-
-      {/* Cards (static layout) */}
-      <div className="w-full flex flex-col items-center gap-10 mt-20 px-4">
-        {projects.map((proj, i) => (
+    <section className="min-h-dvh project text-primary  bg-[url(/images/bg.svg)] flex justify-center items-center bg-center bg-cover z-20 relative w-full">
+      {!isMobile ? (
+        <div className="w-full px-10  overflow-hidden">
           <div
-            key={i}
-            className="3xl:w-[80%] w-[95%] h-[500px] border border-[#403F44] shadow-3xl bg-cards rounded-4xl flex flex-col 3xl:flex-row gap-10"
+            ref={cardsRef}
+            className="flex  items-center text-center  gap-20 cards-track"
           >
-            <div className="w-full 3xl:w-1/2 h-[40%] 3xl:h-full p-2 xl:p-6">
-              <img
-                src={proj.image}
-                alt=""
-                className="size-full object-cover rounded-[17px]"
-              />
+            <div className=" w-[40%]">
+              <h1 className="text-xl heading font-poppins uppercase tracking-wide w-full text-start ">
+                Selected Works
+              </h1>
+              <h1 className="text-[4rem] heading w-full text-start font-poppins font-bold">
+                Featured{" "}
+                <span className="text-cards bg-primary px-2">Projects</span>
+              </h1>
             </div>
-
-            <div className="3xl:mt-8 w-full 3xl:w-1/2 px-4 flex flex-col">
-              <h1 className="font-display uppercase text-xs 3xl:text-xl font-bold bg-primary/40 text-cards w-fit p-2 rounded-lg">
-                {proj.title}
-              </h1>
-
-              <h1 className="3xl:text-3xl text-[20px] mt-3 font-poppins font-medium text-primary">
-                {proj.description}
-              </h1>
-
-              <div className="flex flex-wrap gap-3 mt-4">
-                {proj.tech.map((tech, index) => (
-                  <span
-                    key={index}
-                    className={`px-4 py-1 text-sm rounded-lg border font-medium tracking-wide ${
-                      techColors[tech] || "border-gray-500 text-gray-400"
-                    }`}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <p className="text-[18px] hidden 3xl:block mt-6 text-justify mr-10 font-poppins font-light text-primary">
-                {proj.explain}
-              </p>
-
-              <div className="flex justify-end mt-auto mb-6 gap-6">
-                <button className="text-[18px] source relative border px-2 font-poppins font-light text-primary overflow-hidden">
-                  <span className="source-mask block relative overflow-hidden">
-                    <span className="source-text block">Source Code</span>
-                    <span className="source-text absolute left-0 top-full">
-                      Source Code
-                    </span>
-                  </span>
-                </button>
-
-                <a
-                  href={proj.link}
-                  className="text-[18px] border bg-primary p-2 font-poppins font-medium text-cards"
+            <div className="flex gap-12 w-[60%]">
+              {projects.map((pro, i) => (
+                <div
+                  className="min-w-[90%] flex font-display font-medium relative flex-col featureCards h-[700px] backdrop-blur-3xl backdrop-brightness-220 overflow-hidden justify-start items-start border-white/20 group border-2 p-10 rounded-[34px] bg-gray-600/10"
+                  key={i}
                 >
-                  Working Demo
-                </a>
-              </div>
+                  <div className="w-full h-2/3 rounded-[17px] overflow-hidden">
+                    <img
+                      src={pro.image}
+                      alt=""
+                      className="size-full group-hover:scale-105 group-hover:grayscale-0 grayscale-100 transition-all duration-300 ease-linear object-cover"
+                    />
+                  </div>
+                  <h1
+                    className="text-cards z-30 
+            mt-5 text-xl uppercase
+             bg-primary/40 px-2 
+             font-display tracking-wider
+              font-medium backdrop-blur-3xl 
+              drop-shadow-2xl rounded-lg"
+                  >
+                    {pro.title}
+                  </h1>
+                  <h1
+                    className="text-primary z-30 
+            mt-5 text-3xl capitalize
+              px-2 
+             font-display tracking-wider
+              font-bold backdrop-blur-3xl 
+              drop-shadow-2xl rounded-lg"
+                  >
+                    {pro.description}
+                  </h1>
+                  <span className="w-full flex pl-2 mt-2 gap-4">
+                    {pro.tech.map((proj,i)=>
+                     ( <span key={i} className={`border-2 px-2 rounded-sm`}
+                     style={{
+                      borderColor:`${techColor[proj]}`,
+                      color:`${techColor[proj]}`
+                     }}>
+                      {proj}
+                     </span>
+                    ))}
+                  </span>
+
+                  <div className="w-fit h-fit flex gap-4 absolute bottom-10 right-10">
+                    <button className="border-2 border-primary text-primary cursor-pointer active:scale-95 px-2 py-2"><span><a href={pro.link}>Live Demo</a></span></button>
+                    <button  className="bg-primary text-cards px-2 py-2"> View Source Code</button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div className="w-full px-10 py-10 overflow-hidden">
+          <div
+            ref={cardsRef}
+            className="flex flex-col  items-center text-center  gap-20"
+          >
+            <div className=" w-full">
+              <h1 className="text-xl heading font-poppins uppercase tracking-wide w-full text-start ">
+                Selected Works
+              </h1>
+              <h1 className="text-[4rem] heading w-full text-start font-poppins font-bold">
+                Featured{" "}
+                <span className="text-cards bg-primary px-2">Projects</span>
+              </h1>
+            </div>
+            <div className="flex flex-col gap-8  z-20 w-full">
+              {projects.map((pro, i) => (
+                <div
+                  className="min-w-[90%] featureCards h-[700px] backdrop-blur-3xl overflow-hidden border-white/20 group border-2 p-10 rounded-[34px] bg-gray-600/25"
+                  key={i}
+                >
+                  <div className="w-full h-1/2 rounded-[17px] overflow-hidden">
+                    <img
+                      src={pro.image}
+                      alt=""
+                      className="size-full group:hover:scale-105 transition-all duration-300 ease-linear object-cover"
+                    />
+                    
+                  </div>
+                   <h1
+                    className="text-cards z-30 
+            mt-5 text-xl uppercase
+             bg-primary/40 w-fit px-2 
+             font-display tracking-wider
+              font-medium backdrop-blur-3xl 
+              drop-shadow-2xl rounded-lg"
+                  >
+                    {pro.title}
+                  </h1>
+                  <h1
+                    className="text-primary z-30 
+            mt-5 text-2xl capitalize
+              px-2 
+             font-poppins tracking-wider
+              font-medium text-start 
+              drop-shadow-2xl rounded-lg"
+                  >
+                    {pro.description}
+                  </h1>
+                  <span className="w-full flex flex-wrap pl-2 mt-2 gap-4">
+                    {pro.tech.map((proj,i)=>
+                     ( <span key={i} className={`border-2 text-[12px] px-2 rounded-sm`}
+                     style={{
+                      borderColor:`${techColor[proj]}`,
+                      color:`${techColor[proj]}`
+                     }}>
+                      {proj}
+                     </span>
+                    ))}
+                  </span>
+
+                  <div className="w-fit h-fit flex gap-4 absolute bottom-10 right-10">
+                    <button className="border-2 border-primary text-primary cursor-pointer active:scale-95 px-2 py-2"><span><a href={pro.link}>Live Demo</a></span></button>
+                    <button  className="bg-primary text-cards px-2 py-2"> View Source Code</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

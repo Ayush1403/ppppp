@@ -65,7 +65,7 @@ const Hero = () => {
     btn2.addEventListener("mouseleave", () => tl2.reverse());
 
     gsap.to(".subhero", {
-      y: -400,
+      yPercent: -30,
     
       opacity:0,
       scrollTrigger: {
@@ -74,8 +74,9 @@ const Hero = () => {
         endTrigger: ".project",
         end: "clamp(top top)", // how long hero stays pinned
         pin: true,
-        pinSpacing: false, // 🔥 THIS enables overlap
+        pinSpacing: false,
         scrub: true,
+        
       
       },
     });
@@ -84,11 +85,36 @@ const Hero = () => {
   });
 
   return (
-    <div className="w-full hero relative overflow-hidden h-dvh flex  justify-center px-10  text-shadow-cards items-center">
-      
+    <div
+    id="hero"
+    className="w-full hero relative overflow-hidden min-h-dvh flex  justify-center px-10  text-shadow-cards items-center">
+        <svg
+          className="absolute inset-0 w-full h-full will-change-transform"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern
+              id="grid"
+              x="0"
+              y="0"
+              width="60"
+              height="60"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect width="60" height="60" fill="#171719" />
+              <path
+                d="M 60 0 L 0 0 0 60"
+                fill="none"
+                stroke="#141416"
+                strokeWidth="15"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
       <div className="w-full z-0 subhero flex flex-col justify-center items-center">
       
-          <h1 className="uppercase hero-text tracking-wider font-display text-primary text-xs md:text-xl">
+          <h1 className="uppercase hero-text tracking-wider w-[55%] font-display text-primary text-xs md:text-xl">
             Your Creative buddy
           </h1>
           <h1 className="text-[2.1rem] md:text-[4rem] lg:text-[7rem] hero-text text-primary font-display font-bold leading-[0.95]">
