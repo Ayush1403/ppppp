@@ -76,8 +76,9 @@ const App = () => {
 
         
         <Hero/>
-        <Features projects={projects} />
         <Services />
+        <Features projects={projects} />
+        
         <Tech />
     </div>
   )

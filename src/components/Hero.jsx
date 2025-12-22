@@ -65,7 +65,7 @@ const Hero = () => {
     btn2.addEventListener("mouseleave", () => tl2.reverse());
 
     gsap.to(".subhero", {
-      yPercent: -30,
+      y: -1000,
     
       opacity:0,
       scrollTrigger: {
@@ -73,8 +73,7 @@ const Hero = () => {
         start: "clamp(top center)",
         endTrigger: ".project",
         end: "clamp(top top)", // how long hero stays pinned
-        pin: true,
-        pinSpacing: false,
+       
         scrub: true,
         
       
@@ -87,7 +86,7 @@ const Hero = () => {
   return (
     <div
     id="hero"
-    className="w-full hero relative overflow-hidden min-h-dvh flex  justify-center px-10 bg-cover bg-center text-shadow-cards items-center"
+    className="w-full hero relative overflow-hidden min-h-dvh flex mb-0 justify-center px-10 bg-cover bg-center text-shadow-cards items-center"
     
     style={{backgroundImage: `url(${"images/herobg.jpg"})`}}>
         {/* <svg

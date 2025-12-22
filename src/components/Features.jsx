@@ -8,7 +8,7 @@ const Features = ({ projects }) => {
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
   const isMobile = useMediaQuery({
-    query: "(max-width: 1486px)",
+    query: "(max-width: 1337px)",
   });
 
   const cardsRef = useRef(null);
