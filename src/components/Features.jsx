@@ -219,7 +219,7 @@ const Features = ({ projects }) => {
             <div className="flex flex-col gap-8  z-20 w-full">
               {projects.map((pro, i) => (
                 <div
-                  className="min-w-[90%] featureCards h-[700px] backdrop-blur-3xl overflow-hidden border-white/20 group border-2 p-4 rounded-[34px] bg-gray-600/25"
+                  className="min-w-[90%] featureCards h-fit backdrop-blur-3xl overflow-hidden border-white/20 group border-2 p-4 rounded-[34px] bg-gray-600/25"
                   key={i}
                 >
                   <div className="w-full h-1/2 rounded-[17px] overflow-hidden">
