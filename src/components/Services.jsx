@@ -1,20 +1,27 @@
 import React from "react";
-
+import { useMediaQuery } from "react-responsive";
 const Services = () => {
+
+  const isMobile = useMediaQuery({
+    query: "(max-width:1090px) "
+  })
   return (
-    <section className="services w-full z-20 bg-[#090909] h-dvh flex flex-col 2xl:flex-row  relative items-center justify-center px-20">
-      <div className="w-full 2xl:w-1/2 flex justify-center">
-        <h1 className="text-[2rem] md:text-[5rem] text-primary  font-poppins font-stretch-90% tracking-tighter font-bold ">
+    <>
+    {!isMobile ? (
+      <section className="services w-full z-20 bg-[#090909] h-dvh flex flex-col relative items-center justify-center">
+     <div className="w-[90%] flex">
+       <div className="w-1/2 justify-center items-center">
+        <h1 className="text-[64px] text-primary  font-display font-stretch-90% tracking-tighter font-bold ">
           Hi! I’m{" "}
-          <span className="bg-primary text-cards md:px-2 rounded-lg">Ayush</span>,{" "}
+          <span className="bg-primary text-cards px-2 rounded-lg">Ayush</span>,{" "}
           <br />
-          <span className="">
+          <span className="text-justify">
             I love building things that make the web feel simple and human.
           </span>
         </h1>
       </div>
-      <div className="flex items-center flex-col w-full md:w-1/2 text-[1rem] xl:text-xl text-primary/80 md:px-40   font-poppins leading-wider tracking-wider font-normal ">
-        <p className="hidden md:block">
+      <div className="flex items-center flex-col w-1/2 text-[19.2px] text-primary/90 px-10 justify-center  font-display tracking-tighter font-medium ">
+        <p>
           I’m a frontend developer based in India, focused on crafting clean,
         responsive, and intuitive web experiences using modern technologies like
         React and Tailwind CSS.
@@ -25,7 +32,37 @@ const Services = () => {
         dashboards, or thoughtful UI flows, I care deeply about performance,
         accessibility, and user experience.</p>
       </div>
+     </div>
     </section>
+    ) : (
+      <section className="services w-full z-20 bg-[#090909] h-dvh flex flex-col relative items-center justify-center ">
+     <div className="w-3/4 flex  flex-col">
+       <div className="w-[76%] flex justify-center items-center">
+        <h1 className="text-[40px] text-primary  font-display font-stretch-90% tracking-tighter font-bold ">
+          Hi! I’m{" "}
+          <span className="bg-primary text-cards px-2 rounded-lg">Ayush</span>,{" "}
+          <br />
+          <span className="text-justify">
+            I love building things that make the web feel simple and human.
+          </span>
+        </h1>
+      </div>
+      <div className="flex items-center flex-col  text-[17.2px] text-primary/90 justify-center  font-display tracking-tighter font-medium ">
+        <p>
+          I’m a frontend developer based in India, focused on crafting clean,
+        responsive, and intuitive web experiences using modern technologies like
+        React and Tailwind CSS.
+        </p>
+        <p className="mt-6"> I enjoy working at the intersection of design
+        and logic—turning ideas into interfaces that not only look good but feel
+        right to use. Whether it’s building interactive maps, AI-powered
+        dashboards, or thoughtful UI flows, I care deeply about performance,
+        accessibility, and user experience.</p>
+      </div>
+     </div>
+    </section>
+    )}
+    </>
   );
 };
 
