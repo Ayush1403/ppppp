@@ -14,10 +14,7 @@ const Features = ({ projects }) => {
   const cardsRef = useRef(null);
 
   useGSAP(() => {
-    const split = new SplitText(".heading", {
-      type: "words,lines",
-      mask: "lines",
-    });
+ 
 
     if (isMobile) return;
     if (!cardsRef.current) return;
@@ -38,21 +35,14 @@ const Features = ({ projects }) => {
       },
     });
 
-    gsap.from(split.words, {
-      y: 100,
-      opacity: 0,
-      stagger: 0.09,
-      scrollTrigger: {
-        trigger: ".project",
-        start: "clamp(top top+=300)",
-        toggleActions: "play none none reverse",
-      },
-    });
-    return () => {
-      split.revert(); // VERY important
-    };
+   
   });
   useGSAP(() => {
+
+       const split = new SplitText(".heading", {
+      type: "words,lines",
+      mask: "lines",
+    });
     const sourceBtn = document.querySelectorAll(".btn-mask");
     
     sourceBtn.forEach((btn) => {
@@ -71,8 +61,38 @@ const Features = ({ projects }) => {
       
       btn.addEventListener("mouseenter", () => tl2.play());
       btn.addEventListener("mouseleave", () => tl2.reverse());
+
+   
     });
-    
+       if(isMobile){
+         gsap.from(split.words, {
+      y: 100,
+      opacity: 0,
+      stagger: 0.09,
+      scrollTrigger: {
+        trigger: ".project",
+        start: "clamp(top center)",
+        toggleActions: "play none none reverse",
+        
+      },
+    });
+      }
+      else{
+         gsap.from(split.words, {
+      y: 100,
+      opacity: 0,
+      stagger: 0.09,
+      scrollTrigger: {
+        trigger: ".project",
+        start: "clamp(top top+=300)",
+        toggleActions: "play none none reverse",
+        
+      },
+    });
+      }
+    return () => {
+      split.revert(); // VERY important
+    };
   });
   useGSAP(() => {
   const btns = document.querySelectorAll(".btnmask");
