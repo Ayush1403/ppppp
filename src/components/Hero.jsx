@@ -40,7 +40,7 @@ const Hero = () => {
       yPercent: -100,
       duration: 0.4,
       ease: "power2.out",
-      skewY: 2,
+     
     });
 
     btn.addEventListener("mouseenter", () => tl.play());
@@ -87,8 +87,10 @@ const Hero = () => {
   return (
     <div
     id="hero"
-    className="w-full hero relative overflow-hidden min-h-dvh flex  justify-center px-10  text-shadow-cards items-center">
-        <svg
+    className="w-full hero relative overflow-hidden min-h-dvh flex  justify-center px-10 bg-cover bg-center text-shadow-cards items-center"
+    
+    style={{backgroundImage: `url(${"images/herobg.jpg"})`}}>
+        {/* <svg
           className="absolute inset-0 w-full h-full will-change-transform"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -111,10 +113,10 @@ const Hero = () => {
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+        </svg> */}
       <div className="w-full z-0 subhero flex flex-col justify-center items-center">
       
-          <h1 className="uppercase hero-text tracking-wider w-[55%] font-display text-primary text-xs md:text-xl">
+          <h1 className="uppercase hero-text tracking-wider w-[75%] md:w-[55%] font-display text-primary text-xs md:text-xl">
             Your Creative buddy
           </h1>
           <h1 className="text-[2.1rem] md:text-[4rem] lg:text-[7rem] hero-text text-primary font-display font-bold leading-[0.95]">
@@ -137,7 +139,7 @@ const Hero = () => {
             </span>
           </button>
 
-          <button className="bg-transparent btn-j border-2 cursor-pointer group border-primary text-primary px-8 py-4 mt-2 overflow-hidden relative rounded-full text-lg font-medium transition">
+          <button className="bg-transparent btn-j border-2 cursor-pointer group overflow-hidden border-primary text-primary px-8 py-4 mt-2  relative rounded-full text-lg font-medium transition">
             <span className="block relative overflow-hidden">
               <span className="btn2 block">Get in Touch</span>
               <span className="absolute btn2 left-0 top-full">

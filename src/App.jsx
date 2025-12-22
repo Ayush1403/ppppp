@@ -1,5 +1,6 @@
-import React from 'react'
+import React , {useState} from 'react'
 import { NavBar , Hero ,Features , Services ,Tech } from './components'
+import Preloader from './components/Preloader'
 
 const App = () => {
 
@@ -41,9 +42,12 @@ const App = () => {
         "A real estate platform showcasing property listings with secure authentication, role-based access, clean UI, and responsive design for seamless browsing.",
     },
   ]
+
+  const [loading, setloading] = useState(true)
   return (
     
-    <div className='relative'>
+    <div className='relative overflow-x-auto'>
+      {loading && <Preloader onComplete={()=>setloading(false)} />}
       <NavBar />
        <svg
           className="absolute inset-0 w-full h-full will-change-transform"
