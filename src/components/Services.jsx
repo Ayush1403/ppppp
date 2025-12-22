@@ -18,15 +18,15 @@ const Services = () => {
 
     gsap.from(split.words,{
       xPercent:-100,
-      ease:"power2.in",
+      ease:"expo.out",
       duration:2,
-      stagger:0.01,
+      stagger:0.06,
       scrollTrigger:{
         trigger: ".services",
-        start:"clamp(top 60%)",
+        start:"clamp(top center)",
        end:"clamp(bottom top)",
        toggleActions: "play none none reverse",
-       markers:true,
+       
       }
     })
   })
