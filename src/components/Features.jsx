@@ -264,8 +264,8 @@ const Features = ({ projects }) => {
                     ))}
                   </span>
 
-                  <div className="w-fit h-fit flex gap-4 absolute bottom-10 right-10">
-                    <button className="border-2 border-primary text-primary overflow-hidden cursor-pointer active:scale-95 px-2 py-2">
+                  <div className="w-full px-2 h-fit flex gap-4 bottom-10 mt-8 right-10">
+                    <button className="border-2 w-1/2 border-primary rounded-[17px] text-primary overflow-hidden cursor-pointer active:scale-95 px-2 py-2">
                       
                         <a href={pro.link}> <span className="relative block btnmask overflow-hidden">
                         <span className="block btnn">Live Demo</span>
@@ -275,7 +275,7 @@ const Features = ({ projects }) => {
                       </span></a>
                       
                     </button>
-                    <button className="bg-primary text-cards cursor-pointer active:scale-95 px-2 py-2">
+                    <button className="bg-primary w-1/2 text-cards cursor-pointer active:scale-95 px-2 py-2 rounded-[17px]">
                       <span className="relative block btn-mask overflow-hidden">
                         <span className="block btn">View Source Code</span>
                         <span className="absolute left-0 btn top-full">
