@@ -36,8 +36,8 @@ const Services = () => {
     </section>
     ) : (
       <section className="services w-full z-20 bg-[#090909] h-dvh flex flex-col relative items-center justify-center ">
-     <div className="w-3/4 flex  flex-col">
-       <div className="w-full flex justify-center items-center">
+     <div className="w-3/4 flex  flex-col gap-10">
+       <div className="w-full flex justify-center  items-center">
         <h1 className="text-[40px] text-primary  font-display-alt uppercase font-stretch-90% leading-tight tracking-tightest font-bold ">
           Hi! I’m{" "}
           <span className="bg-primary text-cards px-2 rounded-lg">Ayush</span>,{" "}
