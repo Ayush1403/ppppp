@@ -12,6 +12,8 @@
   --color-primary: #F4F1EB;
   --color-cards: #212124;
   --color-bgF: #131315;
+   --tracking-tightest: -0.088em; 
+   --leading-tightest: -0.12em; 
 }
 
 @layer utilities {

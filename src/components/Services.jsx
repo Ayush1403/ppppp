@@ -37,27 +37,29 @@ const Services = () => {
     ) : (
       <section className="services w-full z-20 bg-[#090909] h-dvh flex flex-col relative items-center justify-center ">
      <div className="w-3/4 flex  flex-col">
-       <div className="w-[76%] flex justify-center items-center">
-        <h1 className="text-[40px] text-primary  font-display font-stretch-90% tracking-tighter font-bold ">
+       <div className="w-full flex justify-center items-center">
+        <h1 className="text-[40px] text-primary  font-display-alt uppercase font-stretch-90% leading-tight tracking-tightest font-bold ">
           Hi! I’m{" "}
           <span className="bg-primary text-cards px-2 rounded-lg">Ayush</span>,{" "}
           <br />
           <span className="text-justify">
-            I love building things that make the web feel simple and human.
+          I build interfaces
+where code meets clarity.
           </span>
         </h1>
       </div>
       <div className="flex items-center flex-col  text-[17.2px] text-primary/90 justify-center  font-display tracking-tighter font-medium ">
         <p>
-          I’m a frontend developer based in India, focused on crafting clean,
-        responsive, and intuitive web experiences using modern technologies like
-        React and Tailwind CSS.
-        </p>
-        <p className="mt-6"> I enjoy working at the intersection of design
-        and logic—turning ideas into interfaces that not only look good but feel
-        right to use. Whether it’s building interactive maps, AI-powered
-        dashboards, or thoughtful UI flows, I care deeply about performance,
-        accessibility, and user experience.</p>
+  Frontend developer based in India, crafting clean and responsive interfaces
+  with React and Tailwind CSS.
+</p>
+
+<p className="mt-6">
+  I blend design and logic to build fast, accessible, and intuitive user
+  experiences that feel right to use, focusing on clarity, performance, and
+  real-world usability.
+</p>
+
       </div>
      </div>
     </section>
