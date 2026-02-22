@@ -52,7 +52,7 @@ const Features = ({projects}) => {
  <div className='w-15 h-15 border-b-3 border-r-3  hidden md:block absolute bottom-20 right-20 border-accent'></div>
   <h1 className='absolute top-20 left-20 hidden md:block text-[14px] text-white/20 font-main font-black md:text-4xl'>Click TO See Demo</h1>
  <h1 className='absolute bottom-20 left-20 text-white/20 font-main font-black text-4xl'>{project.id}</h1>
-
+<h6 className='absolute bottom-20 left-40 text-accent font-handwritten text-3xl'>{project.description}</h6>
  <div className='w-15 h-15 border-t-3 border-r-3 absolute top-20 right-20 border-accent'></div>
       </div>
     </div></Link>
