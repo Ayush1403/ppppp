@@ -1,19 +1,45 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;700;900&family=Caveat:wght@400;700&family=Pacifico&display=swap');
 
 @theme {
   --font-stack: "Stack Sans Headline", sans-serif;
   --font-display: "Syne", sans-serif;
+  --font-main: 'Outfit', -apple-system, sans-serif;
   --font-display-alt: "Rubik", sans-serif;
   --font-poppins: "Poppins", sans-serif;
+  --font-handwritten: 'Caveat', cursive;
   --font-logo: "DM Sans", sans-serif;
   --breakpoint-3xl: 1017px;
   --breakpoint-2xl: 890px;
   --breakpoint-xl: 768px;
-  --color-primary: #F4F1EB;
+    --color-accent: #CBFF00;
+  --color-primary: #FFFFFF;
+  --font-script: 'Pacifico', cursive;
   --color-cards: #212124;
   --color-bgF: #131315;
+   --color-surface: rgba(255, 255, 255, 0.03);
+   --color-secondary: rgba(255, 255, 255, 0.6);
    --tracking-tightest: -0.088em; 
    --leading-tightest: -0.12em; 
+}
+:root {
+  --bg-color: #0A0A0B;
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --color-accent: #CBFF00;
+  --accent-color: #CBFF00;
+ 
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --border-color: rgba(255, 255, 255, 0.08);
+  
+  --font-handwritten: 'Caveat', cursive;
+  --font-script: 'Pacifico', cursive;
+  --transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* Project Colors */
+  --tripon-bg: linear-gradient(135deg, #FF6B6B 0%, #FFD93D 100%);
+  --zentry-bg: linear-gradient(135deg, #7000FF 0%, #00FFD1 100%);
+  --sanskriti-bg: linear-gradient(135deg, #D4145A 0%, #FBB03B 100%);
 }
 
 @layer utilities {
@@ -27,7 +53,11 @@
   .hover-underline:hover::after {
     @apply left-0 w-full;
   }
-
+.text-gradient {
+    background: linear-gradient(90deg, #FF6B6B, #FFD93D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   .custom-clip {
     clip-path: ellipse(50% 35% at 50% 50%);
   }

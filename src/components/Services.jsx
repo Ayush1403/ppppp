@@ -1,135 +1,95 @@
-import React from "react";
-import { useMediaQuery } from "react-responsive";
-import gsap from "gsap";
+import React, { useRef } from 'react'
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/all';
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger , SplitText } from "gsap/all";
+
 const Services = () => {
-  gsap.registerPlugin(ScrollTrigger , SplitText)
-  const isMobile = useMediaQuery({
-    query: "(max-width:1090px) "
-  })
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  const blobRef = useRef(null);
+  const blobtRef = useRef(null);
+  const aboutRef = useRef(null);
+  const aboutheadRef = useRef(null); // ✅ now points directly to h1
 
+  useGSAP(() => {
+    const Splitword = new SplitText(aboutheadRef.current, {
+      type: "words",  // ✅ just chars is enough
+    });
 
-  useGSAP(()=>{
-    const split = new SplitText(".about",{
-      type: "words,lines",
-      mask:"words",
-    })
-
-    gsap.from(split.words,{
-      xPercent:-100,
-      ease:"expo.out",
-      duration:2,
-      stagger:0.06,
-      scrollTrigger:{
-        trigger: ".services",
-        start:"clamp(top center)",
-       end:"clamp(bottom top)",
-       toggleActions: "play none none reverse",
-       
+    gsap.from(Splitword.words, {
+      y: 60,
+      opacity: 0,
+      stagger: 0.04,
+      duration: 0.6,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: aboutRef.current,
+        start: "top center",
+        toggleActions: "play reverse play reverse",
       }
-    })
-  })
-  
+    });
+
+    gsap.to(blobRef.current, {
+      y: "-=200",
+      x: "-=200",
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      duration: 3,
+    });
+
+    gsap.to(blobtRef.current, {
+      y: "+=200",
+      x: "+=200",
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      duration: 3,
+    });
+
+  }, []);
+
   return (
-    <>
-    {!isMobile ? (
-      <section className="services w-full z-20 bg-[#090909] h-dvh flex flex-col relative items-center justify-center">
-     <div className="w-[90%] flex">
-       <div className="w-1/2 justify-center items-center">
-        <h1 className="text-[64px] about text-primary  font-display font-stretch-90% tracking-tighter font-bold ">
-          Hi! I’m{" "}
-          <span className="bg-primary text-cards px-2 rounded-lg">Ayush</span>,{" "}
-          <br />
-          <span className="text-justify">
-            I love building things that make the web feel simple and human.
-          </span>
-        </h1>
-      </div>
-      <div className="flex items-center flex-col w-1/2 text-[19.2px] text-primary/90 px-10 justify-center  font-display tracking-tighter font-medium ">
-        <p>
-          I’m a frontend developer based in India, focused on crafting clean,
-        responsive, and intuitive web experiences using modern technologies like
-        React and Tailwind CSS.
-        </p>
-        <p className="mt-6"> I enjoy working at the intersection of design
-        and logic—turning ideas into interfaces that not only look good but feel
-        right to use. Whether it’s building interactive maps, AI-powered
-        dashboards, or thoughtful UI flows, I care deeply about performance,
-        accessibility, and user experience.</p>
-          <div className="w-full flex mt-8 gap-4">
- <div className="w-1/3 h-[150px] border border-primary/20 bg-primary/5 overflow-hidden rounded-xl p-3 sm:p-4 md:p-5 flex flex-col justify-between hover:bg-primary/10 hover:-translate-y-1 transition-all duration-300">
-  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-primary">
-    Design to Development
-  </h3>
-  <p className="text-xs sm:text-sm text-primary/80 leading-snug">
-    I translate ideas and wireframes into clean, scalable UI while preserving visual intent from concept to code.
-  </p>
-  <span className="text-[10px] sm:text-xs text-primary/50">
-    Figma • React • Component Systems
-  </span>
-</div>
+    <div ref={aboutRef} className='w-full min-h-dvh px-10 md:px-20 py-16 bg-[#0A0A0B] flex items-center justify-center'>
+      <div className='w-full flex flex-col md:flex-row items-center gap-10'>
 
-<div className="w-1/3 h-[150px] border border-primary/20 overflow-hidden bg-primary/5 rounded-xl p-3 sm:p-4 md:p-5 flex flex-col justify-between hover:bg-primary/10 hover:-translate-y-1 transition-all duration-300">
-  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-primary">
-    Performance Matters
-  </h3>
-  <p className="text-xs sm:text-sm text-primary/80 leading-snug">
-    I focus on fast loads, smooth interactions, and efficient state management.
-  </p>
-  <span className="text-[10px] sm:text-xs text-primary/50">
-    Optimized Renders • Lazy Loading • Clean State
-  </span>
-</div>
+        {/* Text Side */}
+        <div className='w-full 2xl:w-1/2 flex flex-col justify-center'>
 
-<div className="w-1/3 h-[150px] border border-primary/20 overflow-hidden bg-primary/5 rounded-xl p-3 sm:p-4 md:p-5 flex flex-col justify-between hover:bg-primary/10 hover:-translate-y-1 transition-all duration-300">
-  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-primary">
-    Built for Humans
-  </h3>
-  <p className="text-xs sm:text-sm text-primary/80 leading-snug">
-    I design intuitive, accessible, and responsive interfaces that feel effortless to use.
-  </p>
-  <span className="text-[10px] sm:text-xs text-primary/50">
-    Accessibility • Responsiveness • UX Clarity
-  </span>
-</div>
-</div>
-      </div>
+        
+          <h1
+            ref={aboutheadRef}
+            className='text-white tracking-tight text-[clamp(3rem,8vw,7rem)]  leading-[0.95] font-black uppercase'
+          >
+            Crafting <br />
+            Digital <br />
+            Experiences
+          </h1>
+
+          <p className='text-white/60 md:text-base text-sm font-normal tracking-wider mt-8 max-w-lg'>
+            I am a Full Stack Architect specializing in high-performance web systems.
+            My approach blends technical precision with visual storytelling to create
+            applications that are as powerful as they are beautiful.
+          </p>
+        </div>
+
+        {/* Image/Visual Side */}
+        <div className='w-full 2xl:w-1/2 hidden 2xl:flex justify-center  items-center h-[500px]'>
+          <div className='w-[80%] h-[80%] overflow-hidden border-2  rounded-3xl border-white/10 bg-surface relative backdrop-blur-xl'>
+            <div ref={blobRef} className='w-[30%] h-[30%] absolute bg-accent blur-[120px] z-0 right-10 top-1/4'></div>
+            <div ref={blobtRef} className='w-1/4 h-1/4 absolute bg-accent blur-[120px] z-0 left-10 bottom-1/4'></div>
+   <div className='flex flex-col absolute top-10 right-10'>
+           <h1 className='text-white/60 text-lg font-normal tracking-[1rem]'>01/Design</h1>
+          <h1 className='text-white/60 text-lg font-normal tracking-[1rem]'>02/Develop</h1>
+          <h1 className='text-white/60 text-lg font-normal tracking-[1rem]'>03/Deploy</h1>
+       </div>
+          </div>
     
-     </div>
-    </section>
-    ) : (
-      <section className="services w-full z-20 bg-[#090909] h-dvh flex flex-col relative items-center justify-center ">
-     <div className="w-3/4 flex  flex-col gap-10">
-       <div className="w-full flex justify-center  items-center">
-        <h1 className="text-[40px] about text-primary  font-display-alt uppercase font-stretch-90% leading-tight tracking-tightest font-bold ">
-          Hi! I’m{" "}
-          <span className="bg-primary text-cards px-2 rounded-lg">Ayush</span>,{" "}
-          <br />
-          <span className="text-justify">
-          I build interfaces
-where code meets clarity.
-          </span>
-        </h1>
-      </div>
-      <div className="flex items-center flex-col  text-[17.2px] text-primary/90 justify-center  font-display tracking-tighter font-medium ">
-        <p>
-  Frontend developer based in India, crafting clean and responsive interfaces
-  with React and Tailwind CSS.
-</p>
-
-<p className="mt-6">
-  I blend design and logic to build fast, accessible, and intuitive user
-  experiences that feel right to use, focusing on clarity, performance, and
-  real-world usability.
-</p>
+        </div>
 
       </div>
-     </div>
-    </section>
-    )}
-    </>
-  );
-};
+    </div>
+  )
+}
 
-export default Services;
+export default Services

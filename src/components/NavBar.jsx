@@ -53,9 +53,9 @@ const NavBar = () => {
   return (
     <div>
       {!mobile ? (
-        <nav className="h-fit navbar bg-primary/10 border border-gray-400 backdrop-blur-2xl fixed top-0 z-50 p-2 flex px-40 justify-between items-center w-3/4 left-1/2 -translate-x-1/2 mt-8 rounded-full">
+        <nav className="h-fit navbar bg-[#0A0A0B]/10 border border-gray-400 backdrop-blur-2xl fixed top-0 z-50 p-2 flex px-40 justify-between items-center w-3/4 left-1/2 -translate-x-1/2 mt-8 rounded-full">
           <h1 className="text-3xl flex justify-center items-center font-bold text-primary">
-            <span className="text-amber-700 w-15 h-15 font-normal text-5xl">
+            <span className="text-amber-700 w-15 h-15 font-main text-5xl">
               <img
                 src="/images/logo.png"
                 className="w-full h-full object-cover"
@@ -65,7 +65,7 @@ const NavBar = () => {
             Ayush
           </h1>
 
-          <div className="flex gap-8 text-lg text-primary font-medium">
+          <div className="flex gap-8 text-lg text-primary font-main font-medium">
             <a
               href="#features"
               className="hover:text-amber-700 inline-block relative after:transition-transform after:w-full after:scale-x-0 after:origin-center after:absolute after:content-[''] after:bg-primary after:h-1 after:left-0 after:-bottom-2 hover:after:scale-x-100"
