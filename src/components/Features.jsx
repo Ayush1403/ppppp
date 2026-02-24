@@ -28,7 +28,7 @@ const Features = ({projects}) => {
 });
   return (
 
-   <main className="w-full min-h-fit bg-[#0A0A0B] text-white">
+   <main className="relative z-10 w-full min-h-fit bg-[#0A0A0B] text-white">
   
    <div className='h-fit w-[90%]  lg:w-[70%] relative'>
      <h1 className='text-primary text-[clamp(2rem,10vw,12vw)] leading-[0.95] tracking-tight  font-main font-black'>Selected<br />
@@ -42,7 +42,7 @@ const Features = ({projects}) => {
    </div>
      <div className='w-full min-h-screen mt-40  overflow-x-hidden flex flex-col justify-center items-center'>
     {projects.map((project,index) => (
-   <Link to={project.link} className='w-full'>
+   <Link to={project.link} className='w-full block'>
      <div className='w-full h-screen flex flex-col justify-center items-center bg-surface relative backdrop-blur-xl'>
       <div className='w-full h-[60%] md:h-full absolute' style={{backgroundColor: project.accentColor, filter: "blur(120px)", opacity: 0.04}}></div>
       <h1  ref={(el) => (titleRefs.current[index] = el)} className='text-2xl heading font-main uppercase absolute bottom-30 text-primary/10 tracking-tightest text-[clamp(35vw,20vw,100vw)] font-black z-10'>{project.title}.{project.title}.{project.title}.</h1>

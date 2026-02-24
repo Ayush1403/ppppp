@@ -60,12 +60,12 @@ const Education = [
 const Tech = () => {
   
   return (
-     <section className={` z-20 relative w-full h-dvh bg-[#0A0A0B] text-primary flex flex-col lg:flex-row gap-16 justify-center items-center  project`}>
-    <div className='w-[40%] h-[80%] flex  flex-col'>
+     <section className={`relative z-0  w-full h-dvh bg-[#0A0A0B] text-primary flex flex-col lg:flex-row gap-16 justify-center items-center project`}>
+    <div className='w-full lg:w-[40%] h-[80%] flex mt-90 lg:mt-0  flex-col'>
       <h6 className="text-secondary font-main tracking-widest text-xl uppercase">capabilities</h6>
       <h1 className='font-main text-[clamp(2rem,8vw,5rem)] leading-[0.95] mt-4  text-wrap tracking-wide  font-bold '>Technical <h6 className='text-gradient'>Stack</h6></h1>
       <div className='px-4 mt-4'>
-        <div className='grid grid-cols-2 w-full  gap-4 mt-8'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 w-full  gap-4 mt-8'>
           {TechStack.map((tech,i)=>(
           <div className='flex flex-col  overflow-hidden w-full justify-center  '>
             <div key={i} className='h-fit p-6 border-2 bg-[#1A1A1B]/50 backdrop-blur-3xl border-secondary/20 rounded-xl-accent text-[#0A0A0B]  flex rounded-2xl items-center  gap-3 '>
@@ -80,9 +80,9 @@ const Tech = () => {
            
       </div>
     </div>
-    <div className='w-[40%] h-[80%] flex  flex-col'>
-      <h6 className="text-secondary font-main tracking-widest text-xl uppercase">Academics</h6>
-      <h1 className='font-main text-[clamp(2rem,8vw,5rem)] leading-[0.95] mt-4  text-wrap tracking-wide  font-bold '>Education</h1>
+    <div className='w-full lg:w-[40%] h-[80%] flex  flex-col justify-center items-center lg:justify-start'>
+      <h6 className="text-secondary text-start w-[90%] font-main tracking-widest text-xl uppercase">Academics</h6>
+      <h1 className='font-main text-start w-[90%]  text-[clamp(2rem,8vw,5rem)] leading-[0.95] mt-4  text-wrap tracking-wide  font-bold '>Education</h1>
       
         {Education.map((edu,i)=>(
           <div key ={i} className='w-[80%] h-[300px] relative flex flex-col overflow-hidden justify-center items-start gap-4 border-2 border-secondary/20 backdrop-blur-3xl bg-[#1A1A1B]/50 p-10 rounded-xl mt-10'>
