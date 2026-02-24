@@ -1,10 +1,14 @@
-import React , {useState} from 'react'
-import { NavBar , Hero ,Features , Services ,Tech } from './components'
+import React, { useState, useEffect, useRef } from 'react'
+import { NavBar, Hero, Features, Services, Tech } from './components'
 import Preloader from './components/Preloader'
+import Lenis from '@studio-freight/lenis'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const App = () => {
-
-   const projects = [
+  const projects = [
     {
       id: "01",
       title: "Sanskriti",
@@ -47,19 +51,42 @@ const App = () => {
     },
   ]
 
-  const [loading, setloading] = useState(true)
+  const [loading, setLoading] = useState(true)
+  const lenisRef = useRef(null)
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    })
+
+    lenisRef.current = lenis
+
+    lenis.on('scroll', ScrollTrigger.update)
+
+    const ticker = (time) => {
+      lenis.raf(time * 1000)
+    }
+
+    gsap.ticker.add(ticker)
+    gsap.ticker.lagSmoothing(0)
+
+    return () => {
+      gsap.ticker.remove(ticker)
+      lenis.destroy()
+    }
+  }, [])
+
+ 
+
   return (
-    
     <div className='relative overflow-x-hidden'>
-     
+      
       <NavBar />
-       
-        
-        <Hero/>
-        <Services />
-        <Features projects={projects} />
-        
-        <Tech />
+      <Hero />
+      <Services />
+      <Features projects={projects} />
+      <Tech />
     </div>
   )
 }

@@ -54,7 +54,7 @@
     @apply left-0 w-full;
   }
 .text-gradient {
-    background: linear-gradient(90deg, #FF6B6B, #FFD93D);
+     background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
