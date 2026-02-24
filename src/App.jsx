@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { NavBar, Hero, Features, Services, Tech } from './components'
+import { NavBar, Hero, Features, Services, Tech, Pricing } from './components'
 import Preloader from './components/Preloader'
 import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
@@ -87,6 +87,7 @@ const App = () => {
       <Services />
       <Features projects={projects} />
       <Tech />
+      <Pricing />
     </div>
   )
 }
