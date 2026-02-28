@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { NavBar, Hero, Features, Services, Tech, Pricing } from './components'
-import Preloader from './components/Preloader'
-import Lenis from '@studio-freight/lenis'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import React, { useState, useEffect, useRef } from "react";
+import { NavBar, Hero, Features, Services, Tech, Pricing } from "./components";
+import Preloader from "./components/Preloader";
+import Lenis from "@studio-freight/lenis";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
   const projects = [
@@ -49,47 +49,44 @@ const App = () => {
       explain:
         "A real estate platform showcasing property listings with secure authentication, role-based access, clean UI, and responsive design for seamless browsing.",
     },
-  ]
+  ];
 
-  const [loading, setLoading] = useState(true)
-  const lenisRef = useRef(null)
+  const [loading, setLoading] = useState(true);
+  const lenisRef = useRef(null);
 
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    })
+    });
 
-    lenisRef.current = lenis
+    lenisRef.current = lenis;
 
-    lenis.on('scroll', ScrollTrigger.update)
+    lenis.on("scroll", ScrollTrigger.update);
 
     const ticker = (time) => {
-      lenis.raf(time * 1000)
-    }
+      lenis.raf(time * 1000);
+    };
 
-    gsap.ticker.add(ticker)
-    gsap.ticker.lagSmoothing(0)
+    gsap.ticker.add(ticker);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      gsap.ticker.remove(ticker)
-      lenis.destroy()
-    }
-  }, [])
-
- 
+      gsap.ticker.remove(ticker);
+      lenis.destroy();
+    };
+  }, []);
 
   return (
-    <div className='relative overflow-x-hidden'>
-      
+    <div className="relative overflow-x-hidden">
       <NavBar />
       <Hero />
       <Services />
       <Features projects={projects} />
       <Tech />
-      <Pricing />
+      <Pricing /> 
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
