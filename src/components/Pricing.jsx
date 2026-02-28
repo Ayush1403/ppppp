@@ -129,6 +129,7 @@ const Pricing = () => {
   return (
     <section
       ref={sectionRef}
+      id="contact"
       className="relative w-full min-h-[70vh] flex justify-center items-center bg-[#0A0A0B]"
     >
       <div className="w-[95%] max-w-6xl mt-16 md:mt-0 flex flex-col md:flex-row gap-12">

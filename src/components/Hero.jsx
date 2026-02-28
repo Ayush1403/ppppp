@@ -47,6 +47,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
+      id="main"
       className="bg-black relative flex w-full justify-center items-center min-h-dvh "
     >
       <div

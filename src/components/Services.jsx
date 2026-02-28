@@ -52,6 +52,7 @@ const Services = () => {
   return (
     <div
       ref={aboutRef}
+      id="about"
       className="w-full relative min-h-dvh px-10 md:px-20 py-16 bg-[#0A0A0B] flex items-center justify-center"
     >
       <div className="w-full flex flex-col md:flex-row items-center gap-10">

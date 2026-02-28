@@ -69,6 +69,7 @@ const Education = [
 const Tech = () => {
   return (
     <section
+    id="tech"
       className={`relative z-0  w-full min-h-dvh bg-[#0A0A0B] text-primary flex flex-col lg:flex-row gap-16 justify-center items-center project`}
     >
       <div className="w-full lg:w-[40%] h-[80%] flex mt-90 lg:mt-0  flex-col">
