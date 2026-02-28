@@ -26,7 +26,7 @@ const Features = ({ projects }) => {
   });
   return (
     <main className="relative z-10 w-full min-h-fit bg-[#0A0A0B] text-white" id="projects">
-      <div className="h-fit w-[90%]  lg:w-[70%] relative">
+      <div className="h-fit w-[90%] pt-32 lg:pt-0 lg:w-[70%] relative">
         <h1 className="text-primary text-[clamp(2rem,10vw,12vw)] leading-[0.95] tracking-tight  font-main font-black">
           Selected
           <br />
