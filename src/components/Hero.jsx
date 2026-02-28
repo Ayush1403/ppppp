@@ -41,6 +41,7 @@ const Hero = () => {
         scrub: true,
       },
     });
+    splitHeading.revert();
   }, []);
 
   return (

@@ -46,6 +46,7 @@ const Services = () => {
       ease: "sine.inOut",
       duration: 3,
     });
+    Splitword.revert();
   }, []);
 
   return (
